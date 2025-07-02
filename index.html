@@ -1,27 +1,245 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BitFlare</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    #B{
+      color:#FF9335;
+      font-weight:bold;
+      font-size:200%;
+    }
 
-#cursor_blink{	
-    color:#FF9335;
-    font-weight:bold;
-    font-size:300%;
-    animation-name:blink;
-    animation-duration:1.23s;
-    animation-timing-function:step-start;
-    animation-iteration-count:Infinite;
-}
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+    }
 
-@keyframes blink{
-  0%{color:#FF9335;}
-  50%{color:#000000;}
-}
+    header {
+      text-align: center;
+      padding-bottom: 1.5rem;
+    }
 
-    </style>
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      color: #00ffcc;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #888;
+    }
+
+    .top-right-icons {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .icon-box {
+      width: 50px;
+      height: 50px;
+      background-color: #1a1a1a;
+      border: none; 
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .icon-box:hover {
+      background-color: #222;
+    }
+
+    .donation-hint {
+      text-align: center;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      #font-style: italic;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .links {
+      list-style: none;
+    }
+
+    .links li {
+      margin-bottom: 1rem;
+    }
+
+    .links a {
+      display: block;
+      padding: 1rem;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #00ffcc;
+      font-size: 1.2rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .links a:hover {
+      background-color: #222;
+      color: #ffffff;
+    }
+
+    .qr-section {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+      flex-wrap: nowrap;
+      margin-top: 3rem;
+    }
+
+    .qr-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 250px;
+    }
+
+    .qr-box {
+      width: 220px;
+      height: 220px;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .qr-box img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .btcaddr {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: center;
+      word-break: break-word;
+    }
+
+    .lnurl{
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: center;
+      word-break: normal;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    @media(max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      .links a {
+        font-size: 1rem;
+        padding: 0.75rem;
+      }
+      .icon-box {
+        width: 40px;
+        height: 40px;
+      }
+      .qr-box {
+        width: 100px;
+        height: 100px;
+      }
+      .qr-container {
+        max-width: 150px;
+      }
+      .btcaddr {
+        font-size: 0.8rem;
+      }
+      .lnurl {
+        font-size: 0.8rem;
+      }
+
+    }
+  </style>
 </head>
+<body>
+  <div class="top-right-icons">
+    <!-- https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg -->
+    <a href="https://github.com/binflare" target="_blank" rel="noopener noreferrer" class="icon-box" title="GitHub">
+      <img src="img/github.svg" alt="gh" style="width:24px; height:24px;"/>
+    </a>
+    <!-- props go to https://github.com/SovrynMatt/Nostr-Website-Button-Design -->
+    <a href="https://primal.net/p/npub12xmvnfw773p335y7a73ydgfmtj9ecg83gq7lh4prgmz09s0e0zfsgvvr5d" target="_blank" rel="noopener noreferrer" class="icon-box" title="Nostr">
+      <img src="img/nostrich.png" alt="nostr" style="width:32px; height:32px;"/>
+    </a>
+  </div>
 
-<body style="background-color:#000000"> 
-<pre id=cursor_blink> &#8383; </pre>
+  <header>
+    <h1>&#8383;itFlare</h1>
+    <p> Stack the Planet </p><!-- <p id=B> &#8383;</p> -->
+  </header>
+  <main>
+    <ul class="links">
+      <li><a href="https://njump.me/naddr1qvzqqqr4gupzq5dkexjaaazrrrgfamazg6snkhytnss0zspal02zx3ky7tqlj7ynqq2n23mrgsenzsnxw5cy2ujdx3rx5cesgvkks9zkwhm" target="_blank" rel="noopener noreferrer">Watercooling a BitAxe Gamma - Part 1</a></li>
+      <li><a href="html/coming_soon.html" target="_blank" rel="noopener noreferrer">Hitting blocks with a BitAxe</a></li>
+      <li><a href="html/coming_soon.html" target="_blank" rel="noopener noreferrer">Watercooling a BitAxe Gamma - Part 2</a></li>
+      <!-- <li><a href="html/heartbeat.html" target="_blank" rel="noopener noreferrer">Heartbeat</a></li> -->
+    </ul>
+  </main>
+  <!--
+  <div class="donation-hint">
+      If you like this content consider zapping some sats:
+  </div>
+  -->
+  <div class="qr-section">
+    <div class="qr-container">
+      <div class="qr-box" title="Lightning">
+          <img src="img/ln.gif" alt="Lightning" />
+      </div>
+      <div class="lnurl">bitflare@getalby.com</div>
+    </div>
+    <div class="qr-container">
+      <div class="qr-box" title="btc">
+        <img src="img/btc.svg" alt="BTC" />
+      </div>
+      <div class="btcaddr">bc1p3s45l95vrhmtwvzg2pk77ytyhdc8m8kug2w9qyxaskhax9rssgcss7y5rn</div>
+    </div>
+  </div>
+  <footer>
+      <!-- &copy; 2025 BitFLare -->
+      #903564 BitFLare
+  </footer>
 </body>
 </html>
